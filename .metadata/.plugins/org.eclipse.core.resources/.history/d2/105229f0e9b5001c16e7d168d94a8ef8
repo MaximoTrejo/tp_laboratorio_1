@@ -1,0 +1,14 @@
+/*
+ * biblioteca.h
+ *
+ *  Created on: 6 abr. 2022
+ *      Author: maxim
+ */
+
+#ifndef BIBLIOTECA_H_
+#define BIBLIOTECA_H_
+
+
+void menuInicio(void);
+
+#endif /* BIBLIOTECA_H_ */
