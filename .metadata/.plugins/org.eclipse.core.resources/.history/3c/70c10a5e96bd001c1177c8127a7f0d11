@@ -93,7 +93,7 @@ void menuInicio(){
 									//----------------
 									diferencia = diferenciaLatAero(precioKmAero,precioKmLatam);
 
-									printf("\nSe han calculado todos los costos..\n");
+									printf("\nSe calculo todo\n");
 								}else{
 									printf("\nFalta precios de latam");
 								}

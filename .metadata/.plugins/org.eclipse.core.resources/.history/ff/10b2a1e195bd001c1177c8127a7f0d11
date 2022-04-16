@@ -11,31 +11,31 @@
 
 
 ////@fn float tarjetaDebito(float)
-////@brief funcion para saber el precio de un vuelo al pagar con tarjera de debito
+////@brief funcion para saber el precio de un producto al pagar con tarjera de debito
 ///
-////@param precio(es el precio del vuelo) kilometros(kilometros ingresados)
-////@return precio del vuelo pagando con debito
+////@param precio(es el precio del producto) kilometros(kilometros ingresados)
+////@return precio del producto pagando con debito
 float tarjetaDebito(float precio ,int kilometros);
 
 ////@fn float tarjetaCredito(float)
-////@brief funcion para saber el precio de un vuelo al pagar con tarjera de credito
+////@brief funcion para saber el precio de un producto al pagar con tarjera de credito
 ///
-////@param precio(es el precio del vuelo) kilometros(kilometros ingresados)
-////@return precio del  vuelo pagando con credito
+////@param precio(es el precio del producto) kilometros(kilometros ingresados)
+////@return precio del producto pagando con credito
 float tarjetaCredito(float precio ,int kilometros);
 
 ////@fn float totalBtc(float)
-////@brief funcion para saber el precio de un vuelo al pagar con bitcoin
+////@brief funcion para saber el precio de un producto al pagar con bitcoin
 ///
-////@param precio(es el precio del vuelo)
-////@return precio del vuelo pagando con BTC
+////@param precio(es el precio del producto)
+////@return precio del producto pagando con BTC
 float totalBtc(float precio);
 
 ////@fn float precioKilometros(float)
 ////@brief funcion para saber el precio unitario de cada vuelo
 ///
 ////@param precio(es el precio del producto) kilometros(kilometros ingresados)
-////@return el precio unitario
+////@return precio unitario
 float precioKilometros(float precio ,int km );
 
 ////@fn float diferenciaLatAero(float)

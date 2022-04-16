@@ -1,7 +1,7 @@
-21:07:32 **** Incremental Build of configuration Debug for project Tp-Uno ****
+12:03:43 **** Incremental Build of configuration Debug for project Tp-Uno ****
 Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\biblioteca.o" "..\\src\\biblioteca.c" 
 gcc -o Tp-Uno.exe "src\\Tp-Uno.o" "src\\biblioteca.o" 
 
-21:07:32 Build Finished. 0 errors, 0 warnings. (took 493ms)
+12:03:44 Build Finished. 0 errors, 0 warnings. (took 557ms)
 
