@@ -1,25 +1,7 @@
-21:04:22 **** Rebuild of configuration Debug for project Tp-Uno ****
+12:37:52 **** Rebuild of configuration Debug for project TP_[2] ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Tp-Uno.o" "..\\src\\Tp-Uno.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\biblioteca.o" "..\\src\\biblioteca.c" 
-gcc -o Tp-Uno.exe "src\\Tp-Uno.o" "src\\biblioteca.o" 
-Info: Nothing to build for Tp-Uno
-21:05:54 **** Incremental Build of configuration Debug for project Tp-Uno ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\biblioteca.o" "..\\src\\biblioteca.c" 
-gcc -o Tp-Uno.exe "src\\Tp-Uno.o" "src\\biblioteca.o" 
-Info: Nothing to build for Tp-Uno
-21:07:32 **** Incremental Build of configuration Debug for project Tp-Uno ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\biblioteca.o" "..\\src\\biblioteca.c" 
-gcc -o Tp-Uno.exe "src\\Tp-Uno.o" "src\\biblioteca.o" 
-12:01:50 **** Incremental Build of configuration Debug for project Tp-Uno ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\biblioteca.o" "..\\src\\biblioteca.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Tp-Uno.o" "..\\src\\Tp-Uno.c" 
-gcc -o Tp-Uno.exe "src\\Tp-Uno.o" "src\\biblioteca.o" 
-Info: Nothing to build for Tp-Uno
-12:03:43 **** Incremental Build of configuration Debug for project Tp-Uno ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\biblioteca.o" "..\\src\\biblioteca.c" 
-gcc -o Tp-Uno.exe "src\\Tp-Uno.o" "src\\biblioteca.o" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayPassenger.o" "..\\src\\ArrayPassenger.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_[2].o" "..\\src\\TP_[2].c" 
+gcc -o TP_[2].exe "src\\ArrayPassenger.o" "src\\TP_[2].o" "src\\utn.o" 
+Info: Nothing to build for TP_[2]
