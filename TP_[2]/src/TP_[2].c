@@ -20,7 +20,7 @@ int main(void) {
 
 	initPassengers(pasajeros, CANTPAS);
 
-	inicializarTickets(pasajeros,CANTPAS);
+	harcodeo(pasajeros,CANTPAS);
 
 	menuPasajeros(pasajeros, CANTPAS);
 

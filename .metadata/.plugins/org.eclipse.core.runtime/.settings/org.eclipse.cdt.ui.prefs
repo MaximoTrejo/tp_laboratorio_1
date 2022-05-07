@@ -1,6 +1,8 @@
+MemberFilterActionGroup.COutlineViewer.2=true
 consoleOnTop=false
 eclipse.preferences.version=1
 markOccurrences=false
+org.eclipse.cdt.ui.outline.linktoeditor=false
 sourceHoverBackgroundColor=255,255,225
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
