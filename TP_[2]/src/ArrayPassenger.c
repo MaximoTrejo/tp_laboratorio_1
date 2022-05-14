@@ -71,7 +71,7 @@ if(list != NULL){
 						strncpy(list ->flycode,flycodeAux,sizeof (list->flycode));
 						list->id =dameUnIdNuevo();
 						list->isEmpty=OCUPADO;
-						list->statusFlight= 1;//estadoVuelo();
+						list->statusFlight= ACTIVO;//estadoVuelo();
 						retorno=0;
 
 					}
