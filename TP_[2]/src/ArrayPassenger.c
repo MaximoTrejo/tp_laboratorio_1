@@ -17,7 +17,7 @@ static int dameUnIdNuevo(void);
 static void printPassengers(passenger pasajeros);
 static int seleccionarModificar(int *seleccionarMod);
 static int seleccionarAsDes(void);
-static int estadoVuelo(void);
+//static int estadoVuelo(void);
 
 //---------------------------------------------------------INICIALIZAR---------------------------------
 int  initPassengers(passenger list[],int tam){
@@ -71,7 +71,7 @@ if(list != NULL){
 						strncpy(list ->flycode,flycodeAux,sizeof (list->flycode));
 						list->id =dameUnIdNuevo();
 						list->isEmpty=OCUPADO;
-						list->statusFlight=estadoVuelo();
+						list->statusFlight= 1;//estadoVuelo();
 						retorno=0;
 
 					}
@@ -130,7 +130,7 @@ int superPasajeros(passenger list[], int len, float promedio){
 	return retorno;
 }
 //----------------------------------------------------------------------------------------------ID--------------------------
-
+/*
 static int estadoVuelo(void){
 	int estado;
 	int retorno;
@@ -143,7 +143,7 @@ static int estadoVuelo(void){
 	}
 	return retorno;
 }
-
+*/
 
 static int dameUnIdNuevo(void) //privada del archivo
 {
