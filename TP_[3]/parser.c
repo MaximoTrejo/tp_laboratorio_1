@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "LinkedList.h"
+#include "Passenger.h"
+#include "utn.h"
+#include "menu.h"
+#include "parser.h"
+
+
+/** \brief Parsea los datos los datos de los pasajeros desde el archivo data.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListPassenger LinkedList*
+ * \return int
+ *
+ */
+int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
+{
+	int retorno=-1;
+	char id[TAM],nombre[TAM],apellido[TAM],precio[TAM],tipoPasajero[TAM],codigoVuelo[TAM],isEmpty[TAM];
+	int cantidad;
+	Passenger* pAuxPasajeros=NULL;
+
+	if(pFile != NULL && pArrayListPassenger != NULL){
+		//scanf se utiliza para leer los datos//leo la primer linea , el encabezado
+		fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]%[^\n]\n",id,nombre,apellido,precio,codigoVuelo,tipoPasajero,isEmpty);
+
+		while(!feof(pFile)){
+			cantidad=fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]%[^\n]\n",id,nombre,apellido,precio,codigoVuelo,tipoPasajero,isEmpty);
+			//entra y si cada ves que pasa lee la cantidad de datos correctos entra y crea un nuevo pasajero
+			if(cantidad < 7){
+				Passenger_delete(pAuxPasajeros);
+				retorno=-1;
+				break;
+			}else{
+				/*
+				 * 1-crear nuevo pasajero en la estructura psajeros
+				 * 2-ver que no este con basura
+				 * 3-cargarlo en lickedlist
+				 * 4-retornar
+				 */
+				pAuxPasajeros=Passenger_newParametros(id, nombre, apellido, tipoPasajero, precio, codigoVuelo, isEmpty);
+				if(pAuxPasajeros != NULL){
+					ll_add(pArrayListPassenger, pAuxPasajeros);
+					retorno=0;
+				}
+			}
+
+		}//una funcion si le llego al final de un archivo 0 mal 1 bien
+	}
+
+    return retorno;
+}
+
+/** \brief Parsea los datos los datos de los pasajeros desde el archivo data.csv (modo binario).
+ *
+ * \param path char*
+ * \param pArrayListPassenger LinkedList*
+ * \return int
+ *
+ */
+int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
+{
+	int retorno=-1;
+	Passenger * auxPassenger;
+	if(pFile != NULL && pArrayListPassenger != NULL){
+		do{
+			//creo un pasajero en memoria
+			auxPassenger=Passenger_new();
+			if(auxPassenger != NULL){
+				if(fread(auxPassenger,sizeof(Passenger),1,pFile) == 1){
+					ll_add(pArrayListPassenger, auxPassenger);
+					retorno=0;
+				}else{
+					//le hace un free (lo limpia y devuelve error)
+					Passenger_delete(auxPassenger);
+					retorno = -1;
+					break;
+				}
+			}
+
+		}while(feof(pFile) != 0);
+
+	}
+
+    return retorno;
+}
