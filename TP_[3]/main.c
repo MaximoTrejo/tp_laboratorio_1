@@ -99,6 +99,11 @@ int main()
 				}
 				break;
 			case 9:
+				if(controller_saveAsBinary("data.bin", listaPasajeros)==0){
+					printf("*Archivo guardo correctamente\n");
+				}else{
+					printf("No se pudo guardar el archivo\n");
+				}
 				break;
 			case 10:
 				break;

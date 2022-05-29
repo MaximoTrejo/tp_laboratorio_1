@@ -545,6 +545,11 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 {
 	int retorno=-1;
+	int largo;
+	int i;
+
+	FILE *pArchivo;//tipo de estructura que me perdite manupular archivo
+	Passenger * pasajeros;
 	/*
 	 * 1-abro el archivo en modo escritura
 	 * 2-saco el largo
@@ -554,6 +559,23 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 	 * 6-los escribo
 	 * 7-retorno
 	*/
+	if(path!=NULL && pArrayListPassenger){
+		largo=ll_len(pArrayListPassenger);
+		pArchivo=fopen(path,"wr");
+		if(pArchivo!=NULL){
+			for(i=0;i<largo;i++){
+				pasajeros=ll_get(pArrayListPassenger, i);
+				if(pasajeros!=NULL){
+					fwrite(pasajeros,sizeof(Passenger),1,pArchivo);
+				}
+
+			}
+			retorno=0;
+		}else{
+			printf("Se leyo bien");
+		}
+		fclose(pArchivo);
+	}
     return retorno;
 }
 
