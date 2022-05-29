@@ -41,7 +41,9 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 				 */
 				pAuxPasajeros=Passenger_newParametros(id, nombre, apellido, tipoPasajero, precio, codigoVuelo, isEmpty);
 				if(pAuxPasajeros != NULL){
+
 					ll_add(pArrayListPassenger, pAuxPasajeros);
+
 					retorno=0;
 				}
 			}

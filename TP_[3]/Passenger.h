@@ -49,6 +49,9 @@ int Passenger_getTipoPasajero(Passenger* this,int* tipoPasajero);
 int Passenger_setPrecio(Passenger* this,float precio);
 int Passenger_getPrecio(Passenger* this,float* precio);
 
+int Passenger_setIsEmpty(Passenger* this,int isEmpty);
+int Passenger_getIsEmpty(Passenger* this,int* isEmpty);
+
 //-----------------------------------------------------------------
 int Passenger_compareByName(void*p1,void*p2);
 int Passenger_compareById(void* p1 ,void*p2);

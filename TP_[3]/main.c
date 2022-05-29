@@ -91,6 +91,12 @@ int main()
 				}
 				break;
 			case 8:
+				//saco el largo de la lista , retorna 0 bien | -1 mal
+				if(controller_saveAsText("data.csv",listaPasajeros)==0){
+					printf("*Archivo guardo correctamente\n");
+				}else{
+					printf("No se pudo guardar el archivo\n");
+				}
 				break;
 			case 9:
 				break;

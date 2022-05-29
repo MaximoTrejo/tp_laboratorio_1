@@ -468,6 +468,10 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
     return retorno;
 }
 
+
+
+
+
 /** \brief Guarda los datos de los pasajeros en el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -477,7 +481,58 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 {
-    return 1;
+	int retorno=-1;
+	int id;
+	char nombre[TAM];
+	char apellido[TAM];
+	float precio;
+	int tipoPasajero;
+	char codigoVuelo[TAM];
+	int isEmpty;
+	int largo;
+	int i;
+
+	FILE *pArchivo;//tipo de estructura que me perdite manupular archivo
+	Passenger * pasajeros;
+	/*
+	 * 1-abro el archivo en modo escritura
+	 * 2-saco el largo
+	 * 3-leo el enunciado
+	 * 4-traigo los datos de la linkedlist
+	 * 5-los leo con la funcion passenger
+	 * 6-los escribo
+	 * 7-retorno
+	*/
+	if(path != NULL && pArrayListPassenger != NULL){
+		largo =ll_len(pArrayListPassenger);
+		pArchivo=fopen(path,"w");
+
+		if(pArchivo!=NULL){
+
+			fprintf(pArchivo,"id,name,lastname,price,flycode,typePassenger,statusFlight\n");
+
+			for(i=0;i<largo;i++){
+
+				pasajeros=ll_get(pArrayListPassenger, i);
+				Passenger_getId(pasajeros, &id);
+				Passenger_getNombre(pasajeros, nombre);
+				Passenger_getApellido(pasajeros, apellido);
+				Passenger_getPrecio(pasajeros, &precio);
+				Passenger_getTipoPasajero(pasajeros, &tipoPasajero);
+				Passenger_getCodigoVuelo(pasajeros, codigoVuelo);
+				Passenger_getIsEmpty(pasajeros, &isEmpty);
+
+				fprintf(pArchivo,"%d,%s,%s,%f,%s,%d,%d\n",id,nombre,apellido,precio,codigoVuelo,tipoPasajero,isEmpty);
+			}
+			printf("Se leyo bien\n");
+			retorno=0;
+		}else{
+			printf("Error\n");
+
+		}
+	}
+	fclose(pArchivo);
+    return retorno;
 }
 
 /** \brief Guarda los datos de los pasajeros en el archivo data.csv (modo binario).
@@ -489,6 +544,16 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 {
-    return 1;
+	int retorno=-1;
+	/*
+	 * 1-abro el archivo en modo escritura
+	 * 2-saco el largo
+	 * 3-leo el enunciado
+	 * 4-traigo los datos de la linkedlist
+	 * 5-los leo con la funcion passenger
+	 * 6-los escribo
+	 * 7-retorno
+	*/
+    return retorno;
 }
 

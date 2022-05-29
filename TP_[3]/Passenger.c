@@ -172,6 +172,31 @@ int Passenger_getPrecio(Passenger* this,float* precio){
 	}
 	return retorno;
 }
+
+int Passenger_setIsEmpty(Passenger* this,int isEmpty){
+	int retorno=-1;
+	//valido que no haya basura
+	if(this != NULL){
+		//guarda el valor id en la variable id de la estructura
+		this->isEmpty=isEmpty;
+		retorno=0;
+	}
+	return retorno;
+}
+
+
+int Passenger_getIsEmpty(Passenger* this,int* isEmpty){
+	int retorno=-1;
+		//valido que no haya basura
+	if(this != NULL && isEmpty != NULL){
+		//guarda el valor que ya esta en la estructura en el puntero , el cual caudno termine la funcion puede ser usado
+		*isEmpty=this->isEmpty;
+		retorno=0;
+	}
+	return retorno;
+}
+
+
 //-------------------------------------------------------------------------------------------------
 /*
  * //funcion que compara //
