@@ -76,6 +76,12 @@ int main()
 				}
 				break;
 			case 6:
+				if(controller_ListPassenger(listaPasajeros)==0){
+					printf("Se listo correctamente\n");
+
+				}else{
+					printf("No se pudo listar \n");
+				}
 				break;
 			case 7:
 				break;

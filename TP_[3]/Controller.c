@@ -386,7 +386,7 @@ int controller_removePassenger(LinkedList* pArrayListPassenger)
 			if(utn_getInt(&id, "ingrese el id:", "error\n", 1, 2000, REINTENTOS)==0){
 				idBuscado=controller_buscarId(pArrayListPassenger, largo, id);
 					if(idBuscado!=0){
-						ll_remove(pArrayListPassenger, id);
+						ll_remove(pArrayListPassenger, idBuscado);
 						retorno=0;
 					}
 			}
