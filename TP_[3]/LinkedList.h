@@ -69,4 +69,7 @@ LinkedList* ll_subList(LinkedList* this,int from,int to);
 //copia de una lista
 LinkedList* ll_clone(LinkedList* this);
 //ordena la lista
-int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
+//el primer parametro es el puntero linkedlist
+//el segundo es un puntero a funcion
+//y el ultimo es el orden 0 (z a) 1(a z)
+int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order); //orden 0 (z a) 1(a z)

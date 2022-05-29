@@ -39,9 +39,10 @@ void selecModificar(){
 
 
 void opcionesOrdenar(){
-	printf("\n1-nombre");
-	printf("\n2-apellido");
-	printf("\n3-Precio");
-	printf("\n4-TipoPasajero");
-	printf("\n5-CodigoVuelo");
+	printf("\n1-Id");
+	printf("\n2-nombre");
+	printf("\n3-apellido");
+	printf("\n4-Precio");
+	printf("\n5-TipoPasajero");
+	printf("\n6-CodigoVuelo");
 }

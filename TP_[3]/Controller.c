@@ -409,43 +409,61 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
 {
 	int retorno=-1;
 	int opcion;
+	int largo;
 /*
  * 1-validar
+ * 2-ver si hay algo cargado
  * 2-preguntar que quiere ordenar
  * 3-usar las funcion ll_sort (parametros: linkedlist, funcion ordenar pasajeros, orden (1 o 0))
  */
-
 	if(pArrayListPassenger != NULL){
-		opcionesOrdenar();
-		if(utn_getInt(&opcion,"opcion:\n", "Error\n", 1, 5, REINTENTOS)==0){
+
+		largo=ll_len(pArrayListPassenger);
+
+		if(largo!=0){
+
+			if(utn_getInt(&opcion,"opcion:\n", "Error\n", 1, 5, REINTENTOS)==0){
 			switch(opcion){
 			case 1:
-				if(){
-
+				if(ll_sort(pArrayListPassenger,Passenger_compareById, 1)==0){
+					printf("Se ordeno correctamente\n");
+					retorno=0;
 				}
 				break;
 			case 2:
-				if(){
-
+				if(ll_sort(pArrayListPassenger,Passenger_compareByName, 1)==0){
+					printf("Se ordeno correctamente\n");
+					retorno=0;
 				}
 				break;
 			case 3:
-				if(){
-
+				if(ll_sort(pArrayListPassenger,Passenger_compareByApellido, 1)==0){
+					printf("Se ordeno correctamente\n");
+					retorno=0;
 				}
 				break;
 			case 4:
-				if(){
-
+				if(ll_sort(pArrayListPassenger,Passenger_compareByPrecio, 1)==0){
+					printf("Se ordeno correctamente\n");
+					retorno=0;
 				}
 				break;
 			case 5:
-				if(){
-
+				if(ll_sort(pArrayListPassenger,Passenger_compareByTipoPsajero, 1)==0){
+					printf("Se ordeno correctamente\n");
+					retorno=0;
+				}
+				break;
+			case 6:
+				if(ll_sort(pArrayListPassenger,Passenger_compareByCodigoVuelo, 1)==0){
+					printf("Se ordeno correctamente\n");
+					retorno=0;
 				}
 				break;
 			}
 		}
+		}
+		opcionesOrdenar();
 	}
     return retorno;
 }

@@ -84,6 +84,11 @@ int main()
 				}
 				break;
 			case 7:
+				if(controller_sortPassenger(listaPasajeros)==0){
+					printf("se ordeno correctamente\n");
+				}else{
+					printf("no se ordeno correctamente\n");
+				}
 				break;
 			case 8:
 				break;

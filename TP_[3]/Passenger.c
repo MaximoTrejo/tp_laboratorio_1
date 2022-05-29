@@ -173,6 +173,30 @@ int Passenger_getPrecio(Passenger* this,float* precio){
 	return retorno;
 }
 //-------------------------------------------------------------------------------------------------
+/*
+ * //funcion que compara //
+ * tiene como parametros 2 punteros genericos que para que se transformen
+ * hay que castiarlos a pasajeros y de ahi poder llamar a los datos
+ */
+int Passenger_compareById(void* p1 ,void*p2){
+	Passenger* unPasajero;
+	Passenger*otroPasajero;
+	int compara;
+	compara=0;//cuando son iguales
+
+	unPasajero=(Passenger*)p1;
+	otroPasajero=(Passenger*)p2;
+
+	if(unPasajero->id > otroPasajero->id){
+		compara = 1;//cuando p1 es mayor a p2
+	}else{
+		if(unPasajero->id < otroPasajero->id){
+			compara=-1;//cuando p1 es menor a p2
+		}
+	}
+	return compara;
+}
+
 int Passenger_compareByName(void* p1 ,void*p2){
 	Passenger* unPasajero;
 	Passenger*otroPasajero;
@@ -183,22 +207,63 @@ int Passenger_compareByName(void* p1 ,void*p2){
 	return strcmp(unPasajero->nombre,otroPasajero->nombre);
 }
 
-int Passenger_compareById(void* p1 ,void*p2){
+int Passenger_compareByApellido(void* p1 ,void*p2){
 	Passenger* unPasajero;
 	Passenger*otroPasajero;
-	int compara;
-	compara=0;
 
 	unPasajero=(Passenger*)p1;
 	otroPasajero=(Passenger*)p2;
-	if(unPasajero->id > otroPasajero->id){
-		compara = 1;
+
+	return strcmp(unPasajero->apellido,otroPasajero->apellido);
+}
+
+
+int Passenger_compareByPrecio(void* p1 ,void*p2){
+	Passenger* unPasajero;
+	Passenger*otroPasajero;
+	int compara;
+	compara=0;//cuando son iguales
+
+	unPasajero=(Passenger*)p1;
+	otroPasajero=(Passenger*)p2;
+
+	if(unPasajero->precio > otroPasajero->precio){
+		compara = 1;//cuando p1 es mayor a p2
 	}else{
-		if(unPasajero->id < otroPasajero->id){
-			compara=-1;
+		if(unPasajero->precio < otroPasajero->precio){
+			compara=-1;//cuando p1 es menor a p2
 		}
 	}
 	return compara;
 }
 
+int Passenger_compareByTipoPsajero(void* p1 ,void*p2){
+	Passenger* unPasajero;
+	Passenger*otroPasajero;
+	int compara;
+	compara=0;//cuando son iguales
 
+	unPasajero=(Passenger*)p1;
+	otroPasajero=(Passenger*)p2;
+
+	if(unPasajero->tipoPasajero > otroPasajero->tipoPasajero){
+		compara = 1;//cuando p1 es mayor a p2
+	}else{
+		if(unPasajero->tipoPasajero < otroPasajero->tipoPasajero){
+			compara=-1;//cuando p1 es menor a p2
+		}
+	}
+	return compara;
+}
+
+int Passenger_compareByCodigoVuelo(void* p1 ,void*p2){
+	Passenger* unPasajero;
+	Passenger*otroPasajero;
+
+	unPasajero=(Passenger*)p1;
+	otroPasajero=(Passenger*)p2;
+
+	return strcmp(unPasajero->codigoVuelo,otroPasajero->codigoVuelo);
+}
+
+//-------------------------------------------------------------------------------------------------------------

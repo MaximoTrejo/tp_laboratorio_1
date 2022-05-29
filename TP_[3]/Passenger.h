@@ -52,5 +52,13 @@ int Passenger_getPrecio(Passenger* this,float* precio);
 //-----------------------------------------------------------------
 int Passenger_compareByName(void*p1,void*p2);
 int Passenger_compareById(void* p1 ,void*p2);
+int Passenger_compareByApellido(void* p1 ,void*p2);
+int Passenger_compareByPrecio(void* p1 ,void*p2);
+int Passenger_compareByTipoPsajero(void* p1 ,void*p2);
+int Passenger_compareByCodigoVuelo(void* p1 ,void*p2);
+//-----------------------------------------------------------------
+
 int controllerPrintInd(Passenger * auxPasajeros,int indice);
+
+
 #endif /* PASSENGER_H_ */
