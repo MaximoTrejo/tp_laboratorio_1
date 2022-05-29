@@ -10,6 +10,7 @@
 
 void opcionesMenu(void);
 void selecModificar();
+void opcionesOrdenar();
 
 
 #endif /* MENU_H_ */

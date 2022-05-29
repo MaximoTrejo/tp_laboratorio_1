@@ -407,7 +407,47 @@ int controller_removePassenger(LinkedList* pArrayListPassenger)
  */
 int controller_sortPassenger(LinkedList* pArrayListPassenger)
 {
-    return 1;
+	int retorno=-1;
+	int opcion;
+/*
+ * 1-validar
+ * 2-preguntar que quiere ordenar
+ * 3-usar las funcion ll_sort (parametros: linkedlist, funcion ordenar pasajeros, orden (1 o 0))
+ */
+
+	if(pArrayListPassenger != NULL){
+		opcionesOrdenar();
+		if(utn_getInt(&opcion,"opcion:\n", "Error\n", 1, 5, REINTENTOS)==0){
+			switch(opcion){
+			case 1:
+				if(){
+
+				}
+				break;
+			case 2:
+				if(){
+
+				}
+				break;
+			case 3:
+				if(){
+
+				}
+				break;
+			case 4:
+				if(){
+
+				}
+				break;
+			case 5:
+				if(){
+
+				}
+				break;
+			}
+		}
+	}
+    return retorno;
 }
 
 /** \brief Guarda los datos de los pasajeros en el archivo data.csv (modo texto).
