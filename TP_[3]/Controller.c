@@ -422,48 +422,48 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
 
 		if(largo!=0){
 
-			if(utn_getInt(&opcion,"opcion:\n", "Error\n", 1, 5, REINTENTOS)==0){
-			switch(opcion){
-			case 1:
-				if(ll_sort(pArrayListPassenger,Passenger_compareById, 1)==0){
-					printf("Se ordeno correctamente\n");
-					retorno=0;
+			opcionesOrdenar();
+			if(utn_getInt(&opcion,"Opcion:\n", "Error\n", 1, 6, REINTENTOS)==0){
+				switch(opcion){
+					case 1:
+						if(ll_sort(pArrayListPassenger,Passenger_compareById, 1)==0){
+							printf("Se ordeno correctamente\n");
+							retorno=0;
+						}
+						break;
+					case 2:
+						if(ll_sort(pArrayListPassenger,Passenger_compareByName, 1)==0){
+							printf("Se ordeno correctamente\n");
+							retorno=0;
+						}
+						break;
+					case 3:
+						if(ll_sort(pArrayListPassenger,Passenger_compareByApellido, 1)==0){
+						printf("Se ordeno correctamente\n");
+						retorno=0;
+						}
+					break;
+					case 4:
+						if(ll_sort(pArrayListPassenger,Passenger_compareByPrecio, 1)==0){
+							printf("Se ordeno correctamente\n");
+							retorno=0;
+						}
+					break;
+					case 5:
+						if(ll_sort(pArrayListPassenger,Passenger_compareByTipoPsajero, 1)==0){
+							printf("Se ordeno correctamente\n");
+							retorno=0;
+						}
+					break;
+					case 6:
+						if(ll_sort(pArrayListPassenger,Passenger_compareByCodigoVuelo, 1)==0){
+							printf("Se ordeno correctamente\n");
+							retorno=0;
+						}
+						break;
 				}
-				break;
-			case 2:
-				if(ll_sort(pArrayListPassenger,Passenger_compareByName, 1)==0){
-					printf("Se ordeno correctamente\n");
-					retorno=0;
-				}
-				break;
-			case 3:
-				if(ll_sort(pArrayListPassenger,Passenger_compareByApellido, 1)==0){
-					printf("Se ordeno correctamente\n");
-					retorno=0;
-				}
-				break;
-			case 4:
-				if(ll_sort(pArrayListPassenger,Passenger_compareByPrecio, 1)==0){
-					printf("Se ordeno correctamente\n");
-					retorno=0;
-				}
-				break;
-			case 5:
-				if(ll_sort(pArrayListPassenger,Passenger_compareByTipoPsajero, 1)==0){
-					printf("Se ordeno correctamente\n");
-					retorno=0;
-				}
-				break;
-			case 6:
-				if(ll_sort(pArrayListPassenger,Passenger_compareByCodigoVuelo, 1)==0){
-					printf("Se ordeno correctamente\n");
-					retorno=0;
-				}
-				break;
 			}
 		}
-		}
-		opcionesOrdenar();
 	}
     return retorno;
 }

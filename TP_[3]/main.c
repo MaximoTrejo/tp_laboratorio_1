@@ -22,7 +22,6 @@
 *****************************************************/
 
 
-
 int main()
 {
 	setbuf(stdout, NULL);
@@ -44,13 +43,11 @@ int main()
 				}
 				break;
 			case 2:
-				if(ll_len(listaPasajeros)== 0){
 
-					if(controller_loadFromBinary("data.bin",listaPasajeros)==0){
-						printf("*Archivo cargado correctamente\n");
-					}else{
-						printf("*No se pudo cargar el archivo\n");
-					}
+				if(controller_loadFromBinary("data.bin",listaPasajeros)==0){
+					printf("*Archivo cargado correctamente\n");
+				}else{
+					printf("*No se pudo cargar el archivo\n");
 				}
 				break;
 			case 3:

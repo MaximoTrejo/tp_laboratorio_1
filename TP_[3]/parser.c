@@ -19,17 +19,18 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 	int retorno=-1;
 	char id[TAM],nombre[TAM],apellido[TAM],precio[TAM],tipoPasajero[TAM],codigoVuelo[TAM],isEmpty[TAM];
 	int cantidad;
-	Passenger* pAuxPasajeros=NULL;
+	Passenger* pAuxPasajeros;
 
 	if(pFile != NULL && pArrayListPassenger != NULL){
 		//scanf se utiliza para leer los datos//leo la primer linea , el encabezado
 		fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]%[^\n]\n",id,nombre,apellido,precio,codigoVuelo,tipoPasajero,isEmpty);
 
-		while(!feof(pFile)){
+		while(!feof(pFile)){//feof devuelve 0 si llega al final del bloque de datos y 1 si no llega
+
 			cantidad=fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]%[^\n]\n",id,nombre,apellido,precio,codigoVuelo,tipoPasajero,isEmpty);
 			//entra y si cada ves que pasa lee la cantidad de datos correctos entra y crea un nuevo pasajero
 			if(cantidad < 7){
-				Passenger_delete(pAuxPasajeros);
+				//Passenger_delete(pAuxPasajeros);
 				retorno=-1;
 				break;
 			}else{
@@ -40,6 +41,7 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 				 * 4-retornar
 				 */
 				pAuxPasajeros=Passenger_newParametros(id, nombre, apellido, tipoPasajero, precio, codigoVuelo, isEmpty);
+
 				if(pAuxPasajeros != NULL){
 
 					ll_add(pArrayListPassenger, pAuxPasajeros);
