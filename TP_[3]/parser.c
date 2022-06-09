@@ -30,7 +30,8 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 			cantidad=fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]%[^\n]\n",id,nombre,apellido,precio,codigoVuelo,tipoPasajero,isEmpty);
 			//entra y si cada ves que pasa lee la cantidad de datos correctos entra y crea un nuevo pasajero
 			if(cantidad < 7){
-				//Passenger_delete(pAuxPasajeros);
+				//libera memoria
+				Passenger_delete(pAuxPasajeros);
 				retorno=-1;
 				break;
 			}else{
@@ -76,7 +77,7 @@ int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
 					ll_add(pArrayListPassenger, auxPassenger);
 					retorno=0;
 				}else{
-					//le hace un free (lo limpia y devuelve error)
+					//le hace un free (libera memoria y devuelve error)
 					Passenger_delete(auxPassenger);
 					retorno = -1;
 					break;

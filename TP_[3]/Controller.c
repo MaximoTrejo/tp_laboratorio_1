@@ -6,6 +6,8 @@
 #include "menu.h"
 #include "parser.h"
 
+
+
 /** \brief Carga los datos de los pasajeros desde el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -28,10 +30,10 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
 
 	if(pArchivo != NULL){
 		if(parser_PassengerFromText(pArchivo, pArrayListPassenger) ==0){
-			printf("se leyo correctamente\n");
+			//printf("se leyo correctamente\n");
 			retorno=0;
 		}else{
-			printf("no se leyo correctamente");
+			//printf("no se leyo correctamente");
 			retorno=-1;
 		}
 	}
@@ -410,6 +412,7 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
 	int retorno=-1;
 	int opcion;
 	int largo;
+	int opcionSort;
 /*
  * 1-validar
  * 2-ver si hay algo cargado
@@ -426,39 +429,113 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
 			if(utn_getInt(&opcion,"Opcion:\n", "Error\n", 1, 6, REINTENTOS)==0){
 				switch(opcion){
 					case 1:
-						if(ll_sort(pArrayListPassenger,Passenger_compareById, 1)==0){
-							printf("Se ordeno correctamente\n");
-							retorno=0;
+						opcionsort();
+						if(utn_getInt(&opcionSort, "opcion:\n", "Error\n",  1, 2, REINTENTOS)==0){
+							if(opcion==1){
+								if(ll_sort(pArrayListPassenger,Passenger_compareById, 1)==0){
+										printf("Se ordeno correctamente\n");
+										retorno=0;
+								}
+							}else{
+								if(ll_sort(pArrayListPassenger,Passenger_compareById, 0)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}
 						}
+
 						break;
 					case 2:
-						if(ll_sort(pArrayListPassenger,Passenger_compareByName, 1)==0){
-							printf("Se ordeno correctamente\n");
-							retorno=0;
+						opcionsort();
+						if(utn_getInt(&opcionSort, "opcion:\n", "Error\n",  1, 2, REINTENTOS)==0){
+							if(opcion==1){
+								if(ll_sort(pArrayListPassenger,Passenger_compareByName, 1)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}else{
+								if(ll_sort(pArrayListPassenger,Passenger_compareByName, 0)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}
+
 						}
+
+
 						break;
 					case 3:
-						if(ll_sort(pArrayListPassenger,Passenger_compareByApellido, 1)==0){
-						printf("Se ordeno correctamente\n");
-						retorno=0;
+						opcionsort();
+						if(utn_getInt(&opcionSort, "opcion:\n", "Error\n",  1, 2, REINTENTOS)==0){
+							if(opcion==1){
+								if(ll_sort(pArrayListPassenger,Passenger_compareByApellido, 1)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}else{
+								if(ll_sort(pArrayListPassenger,Passenger_compareByApellido, 0)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+									}
+							}
+
 						}
 					break;
 					case 4:
-						if(ll_sort(pArrayListPassenger,Passenger_compareByPrecio, 1)==0){
-							printf("Se ordeno correctamente\n");
-							retorno=0;
+						opcionsort();
+						if(utn_getInt(&opcionSort, "opcion:\n", "Error\n",  1, 2, REINTENTOS)==0){
+							if(opcion==1){
+								if(ll_sort(pArrayListPassenger,Passenger_compareByPrecio, 1)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}else{
+								if(ll_sort(pArrayListPassenger,Passenger_compareByPrecio, 0)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}
+
 						}
+
 					break;
 					case 5:
-						if(ll_sort(pArrayListPassenger,Passenger_compareByTipoPsajero, 1)==0){
-							printf("Se ordeno correctamente\n");
-							retorno=0;
+						opcionsort();
+						if(utn_getInt(&opcionSort, "opcion:\n", "Error\n",  1, 2, REINTENTOS)==0){
+							if(opcion==1){
+								if(ll_sort(pArrayListPassenger,Passenger_compareByTipoPsajero, 1)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}else{
+								if(ll_sort(pArrayListPassenger,Passenger_compareByTipoPsajero, 0)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}
+
 						}
 					break;
 					case 6:
 						if(ll_sort(pArrayListPassenger,Passenger_compareByCodigoVuelo, 1)==0){
 							printf("Se ordeno correctamente\n");
 							retorno=0;
+						}
+
+						opcionsort();
+						if(utn_getInt(&opcionSort, "opcion:\n", "Error\n",  1, 2, REINTENTOS)==0){
+							if(opcion==1){
+								if(ll_sort(pArrayListPassenger,Passenger_compareByTipoPsajero, 1)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}else{
+								if(ll_sort(pArrayListPassenger,Passenger_compareByTipoPsajero, 0)==0){
+									printf("Se ordeno correctamente\n");
+									retorno=0;
+								}
+							}
+
 						}
 						break;
 				}
@@ -514,6 +591,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 			for(i=0;i<largo;i++){
 
 				pasajeros=ll_get(pArrayListPassenger, i);
+
 				Passenger_getId(pasajeros, &id);
 				Passenger_getNombre(pasajeros, nombre);
 				Passenger_getApellido(pasajeros, apellido);
@@ -561,11 +639,17 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 	*/
 	if(path!=NULL && pArrayListPassenger){
 		largo=ll_len(pArrayListPassenger);
+
 		pArchivo=fopen(path,"wr");
+
 		if(pArchivo!=NULL){
+
 			for(i=0;i<largo;i++){
+
 				pasajeros=ll_get(pArrayListPassenger, i);
+
 				if(pasajeros!=NULL){
+
 					fwrite(pasajeros,sizeof(Passenger),1,pArchivo);
 				}
 

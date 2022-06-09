@@ -14,3 +14,8 @@ int controller_buscarId(LinkedList* pArrayListPassenger , int len,int id);
 
 
 
+
+
+int controller_prueba(char* path );
+
+

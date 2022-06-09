@@ -46,3 +46,8 @@ void opcionesOrdenar(){
 	printf("\n5-TipoPasajero");
 	printf("\n6-CodigoVuelo");
 }
+
+void opcionsort(){
+	printf("\n1-Ascendente");
+	printf("\n2-Descendente");
+}

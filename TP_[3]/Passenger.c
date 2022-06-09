@@ -16,6 +16,12 @@
 
 Passenger* Passenger_new(){
 	Passenger *pasajero;
+	/*
+	 * La función malloc() devuelve un puntero al tipo de datos void (sin tipo). Dicho puntero
+	 * puede ser asignado a una variable puntero de cualquier tipo mediante una conversión forzada
+	 * de tipo de datos (casting).
+	 */
+
 	//crea un solo pasajero en MEMORIA
 	pasajero=(Passenger*)malloc(sizeof(Passenger));
 	return pasajero;
@@ -23,6 +29,7 @@ Passenger* Passenger_new(){
 
 //devuelve un pasajero en memoria dinamica
 Passenger* Passenger_newParametros(char* idStr,char* nombreStr,char* apellidoStr,char* tipoPasajeroStr,char* precioStr,char* codigoVueloStr,char* isEmptyStr ){
+
 	Passenger *pasajeros=Passenger_new();
 	//valido que no haya basura
 	if(pasajeros != NULL){
