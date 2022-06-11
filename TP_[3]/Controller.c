@@ -6,7 +6,41 @@
 #include "menu.h"
 #include "parser.h"
 
+int controller_idFantasma(void)
+{
+	char maxIdAux[10];
+	//int maxIdExcel=1000;
+	int newMaxId;
 
+	/*
+	 * 1-abro el archivo en modo lectura
+	 * 2-verifico
+	 * 3-leo lo que hay en el archivo
+	 * 4-convierto a entero a lo que hay dentro del archivo y le sumo 1
+	 * 5-cierro el archivo
+	 * -----------------------
+	 * 6-hablo el archivo en modo escritura y escribo el nuevo id para guardarlo
+	 * 7-cierro el archivo
+	 * 8-retorno el nuevo id
+	 */
+
+	FILE* pArchivo;
+
+	pArchivo=fopen("idFantasma.txt","r");
+
+	if(pArchivo!=NULL){
+		fscanf(pArchivo,"%[^\n]", maxIdAux);
+		newMaxId=atoi(maxIdAux);
+		newMaxId++;
+	}
+	fclose(pArchivo);
+
+	pArchivo=fopen("idFantasma.txt","w");
+	fprintf(pArchivo,"%d\n",newMaxId);
+	fclose(pArchivo);
+
+	return (newMaxId);
+}
 
 /** \brief Carga los datos de los pasajeros desde el archivo data.csv (modo texto).
  *
@@ -123,7 +157,7 @@ int controller_addPassenger(LinkedList* pArrayListPassenger)
 						if(utn_getCaracter(codigoVueloAux, TAM, "ingrese el  codido de vuelo ", "Error..", REINTENTOS)==0){
 
 								pasajeros=Passenger_new();
-								idAux=controller_newId(pArrayListPassenger);
+								idAux=controller_idFantasma();
 								//--------------------------------------------
 								Passenger_setNombre(pasajeros, nombreAux);
 								Passenger_setApellido(pasajeros, apellidoAux);
@@ -638,6 +672,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 	 * 7-retorno
 	*/
 	if(path!=NULL && pArrayListPassenger){
+
 		largo=ll_len(pArrayListPassenger);
 
 		pArchivo=fopen(path,"wr");

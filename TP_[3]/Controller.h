@@ -11,11 +11,9 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger);
 //----------------------------------------------------------------------------------
 int controller_newId(LinkedList* pArrayListPassenger);
 int controller_buscarId(LinkedList* pArrayListPassenger , int len,int id);
+int controller_idFantasma(void);
 
 
 
-
-
-int controller_prueba(char* path );
 
 

@@ -1,9 +1,76 @@
-19:35:07 **** Incremental Build of configuration Debug for project TP_[3] ****
+16:30:27 **** Rebuild of configuration Debug for project TP_[3] ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Passenger.o "..\\Passenger.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o parser.o "..\\parser.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o menu.o "..\\menu.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Passenger.o "..\\Passenger.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o parser.o "..\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o utn.o "..\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
 gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
 Info: Nothing to build for TP_[3]
+16:33:47 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+Info: Nothing to build for TP_[3]
+16:36:26 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+Info: Nothing to build for TP_[3]
+Info: Nothing to build for TP_[3]
+Info: Nothing to build for TP_[3]
+Info: Nothing to build for TP_[3]
+Info: Nothing to build for TP_[3]
+16:40:13 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+16:40:56 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+Info: Nothing to build for TP_[3]
+16:42:16 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+Info: Nothing to build for TP_[3]
+16:43:40 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+..\Controller.c: In function 'controller_idFantasma':
+..\Controller.c:25:24: error: expected ';' before 'newMaxId'
+   25 |   printf("dsfsdfsdfsd")
+      |                        ^
+      |                        ;
+   26 |   newMaxId=atoi(maxIdAux);
+      |   ~~~~~~~~              
+16:43:46 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+Info: Nothing to build for TP_[3]
+16:44:26 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+Info: Nothing to build for TP_[3]
+16:46:09 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+16:47:49 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+16:51:29 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
+Info: Nothing to build for TP_[3]
+Info: Nothing to build for TP_[3]
+16:54:50 **** Incremental Build of configuration Debug for project TP_[3] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LC:\\Users\\maxim\\Desktop\\PROYECTOS\\tp_laboratorio_1\\TP_[3]" -o TP_[3].exe Controller.o Passenger.o main.o menu.o parser.o utn.o -lLinkedList 
