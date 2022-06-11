@@ -24,6 +24,7 @@ Passenger* Passenger_new(){
 
 	//crea un solo pasajero en MEMORIA
 	pasajero=(Passenger*)malloc(sizeof(Passenger));
+
 	return pasajero;
 }
 
