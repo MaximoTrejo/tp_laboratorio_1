@@ -16,6 +16,15 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement);
 LinkedList* ll_newLinkedList(void)
 {
     LinkedList* this= NULL;
+
+    	this=(LinkedList*)malloc(sizeof(LinkedList));//creo espacio en memoria
+
+    	if(this!=NULL){//valido que no este vacio
+
+    		this->size=0;//inicializo la lista en 0
+    		this->pFirstNode=NULL;//inicializo en vacio el puntero al proximo nodo (quiere decir que no hay mas nodos)
+    	}
+
     return this;
 }
 
@@ -28,7 +37,10 @@ LinkedList* ll_newLinkedList(void)
 int ll_len(LinkedList* this)
 {
     int returnAux = -1;
-    return returnAux;
+    if(this!=NULL){//veo que la lista no esta vacia
+    	returnAux=this->size;//cargo en la variable de retorno el tamanio de la lista
+    }
+    return returnAux;//retorno el tamanio de la lista
 }
 
 
@@ -42,10 +54,30 @@ int ll_len(LinkedList* this)
  */
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
-    return NULL;
+	Node*AuxNode=NULL; //creo un puntero a node y lo igualo a null porque en caso de error devuelve null
+	int largo;//creo el largo para sacar el largo de la lista
+
+	largo=ll_len(this);//saco el largo
+
+	//valido que este todo bien
+	//nodeIndex porque es el indice al nodo y verifico que no sea mas chico que el largo de la lista
+	if(this!=NULL && nodeIndex >=0 && largo>nodeIndex){
+
+
+		AuxNode=this->pFirstNode;//pongo en el nodo aux el gancho al nodo
+
+		//busco el nodo que vino por parametro
+		for(int i=0;i<nodeIndex;i++){
+
+			//guerdo el nodo en el aux
+			AuxNode=AuxNode->pNextNode;
+		}
+
+
+	}
+    return AuxNode;//si sale todo bien devuelve el nodo , sino devuelve null
 }
 
-//-----------------------------------------------------------------------------------------------------------------------------------
 /** \brief  Permite realizar el test de la funcion getNode la cual es privada
  *
  * \param this LinkedList* Puntero a la lista
@@ -53,14 +85,11 @@ static Node* getNode(LinkedList* this, int nodeIndex)
  * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
                         (pElement) Si funciono correctamente
  *
-
+ */
 Node* test_getNode(LinkedList* this, int nodeIndex)
 {
     return getNode(this, nodeIndex);
 }
-*/
-//-----------------------------------------------------------------------------------------------------------------------------------
-
 
 
 /** \brief Agrega y enlaza un nuevo nodo a la lista
@@ -75,10 +104,41 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
+    Node*auxNodo;
+    Node*nodoAnterior;
+
+    //el nodo que quiero agregar tiene que ser mayor a 0 y menor al size , que es el total de los nodos
+    if(this!=NULL && nodeIndex >=0 && nodeIndex <= this->size){
+    	//creo un espacio en memoria del nodo
+    	auxNodo=(Node*)malloc(sizeof(Node));
+    	//valido
+    	if(auxNodo!=NULL){
+    		auxNodo->pElement=pElement;//me guardo el nuevo elemento en el nodo
+
+    		if(nodeIndex==0){//esto quiere decir que va al primer nodo , si no es en el primer lugar va a ir entre medio
+
+    			auxNodo->pNextNode=this->pFirstNode; //lo que hice es si tengo un nuevo nodo es transformar a la cabeza en el nuevo nodo
+    			this->pFirstNode=auxNodo;//y en este es unir la cabeza al nuevo nodo
+    			this->size++;
+    			returnAux = 0;
+    		}else{
+    			nodoAnterior=getNode(this, nodeIndex-1);//con esto obtengo el nodo anterior , le paso la lista y la ubicacion del nodo y le resto 1 para que sea el anterior
+    			auxNodo->pNextNode=nodoAnterior->pNextNode;
+    			/*
+    			 *	lo que hice  fue agarra el puntero del nuevo nodo de memoria y transformarlo en el puntero del anteror nodo
+    			 *	(el puntero del anterior nodo tiene guardado la direccion del siguiente)
+    			 * (porque el nuevo antes no existia)
+    			 */
+    			nodoAnterior->pNextNode=auxNodo;//y aca es unir al nodo anterior al nuevo nodo (al nodo que se creo en memoria // queria como entre medio de los 2 nodos (el anterior y el siguiente))
+    			this->size++;
+    			returnAux = 0;
+    		}
+
+    	}
+    }
     return returnAux;
 }
 
-//-----------------------------------------------------------------------------------------------------------------------------------
 /** \brief Permite realizar el test de la funcion addNode la cual es privada
  *
  * \param this LinkedList* Puntero a la lista
@@ -87,13 +147,12 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
   * \return int Retorna  (-1) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
                         ( 0) Si funciono correctamente
  *
-
+ */
 int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     return addNode(this,nodeIndex,pElement);
 }
-*/
-//-----------------------------------------------------------------------------------------------------------------------------------
+
 
 /** \brief  Agrega un elemento a la lista
  * \param pList LinkedList* Puntero a la lista
@@ -105,6 +164,18 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
+    //verifico
+    if(this!=NULL){//no valido el pElement porque puede que no tenga nada , un tren pruede venir con vagones vacios
+
+    	//la funcion addNode carga un nuevo nodo a la lista
+    	//le paso la lista , posicion seria al final , y el elemento(serian los datos)
+    	//serie el size porque este es la cantidad de nodos que hay y le paso la ultima posicion
+    	if(addNode(this,this->size,pElement)==0){
+
+    		returnAux=0;//retorno 0 porque lo pide la funcion
+    	}
+
+    }
 
     return returnAux;
 }
@@ -120,6 +191,20 @@ int ll_add(LinkedList* this, void* pElement)
 void* ll_get(LinkedList* this, int index)
 {
     void* returnAux = NULL;
+
+    //valido
+    if(this!=NULL && index <= this->size){
+    	//creo un nodo aux donde guardo el nodo que quiero obtener
+    	Node* aux= getNode(this, index);
+    	//valido que ese nodo tenga algo
+    	if(aux!=NULL){
+
+    		//retorno los elementos de ese nodo
+    		returnAux = aux->pElement;
+    	}
+
+    }
+
 
     return returnAux;
 }
@@ -137,6 +222,19 @@ void* ll_get(LinkedList* this, int index)
 int ll_set(LinkedList* this, int index,void* pElement)
 {
     int returnAux = -1;
+    Node *aux;
+
+    if(this!=NULL && index<this->size){
+    	//traigo el nodo que quiero modificar
+    	aux=getNode(this, index);
+    	//veo si ese nodo tiene algo
+    	if(aux!=NULL){
+    		//llamo al los elementos del puntero que antes busque y los cmabio por los nuevos elementos que hay en parametros
+    		aux->pElement=pElement;
+    		//retorno 0 si esta bien
+    		returnAux=0;
+    	}
+    }
 
     return returnAux;
 }
@@ -153,6 +251,25 @@ int ll_set(LinkedList* this, int index,void* pElement)
 int ll_remove(LinkedList* this,int index)
 {
     int returnAux = -1;
+    Node *aux;
+    Node*nodoAnterior;
+    if(this!=NULL && index < this->size){
+
+    	if(index==0){
+    		aux=this->pFirstNode;//trasformo al nodo que quiero borrar en el gancho al otro nodo(como la cabeza)
+    		this->pFirstNode=aux->pNextNode;//agarro el gancho y lo igualo al puntero del nodo que quiero borrar (porque en ese nodo esta la direccion de el proximo nodo y si lo igualo es como si uniera la cabeza con el nodo)
+    		free(aux);//borro el nodo que no quiero
+    		this->size--;
+    		returnAux = 0;
+    	}else{
+    		nodoAnterior=getNode(this, index-1);//saco el nodo anterior
+    		aux->pNextNode=nodoAnterior->pNextNode;//agarro el nodo que quiero borrar y lo igualo al puntero del anterior (que guarda la direccion del siguiente )(con esto uno el anterior con el siguiente y me olvido del nodo que quiero borrar)
+    		free(aux);//borro el nodo a borrar
+    		this->size--;
+    		returnAux = 0;
+    	}
+
+    }
 
     return returnAux;
 }
@@ -169,6 +286,17 @@ int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
 
+    if(this!=NULL){
+
+
+    	for(int i=0;i<this->size;i++){
+
+    		 ll_remove(this,i);
+
+    	}
+    	returnAux=0;
+    }
+
     return returnAux;
 }
 
@@ -183,6 +311,12 @@ int ll_clear(LinkedList* this)
 int ll_deleteLinkedList(LinkedList* this)
 {
     int returnAux = -1;
+
+    if(this!=NULL){
+
+    	free(this);
+    	returnAux = 0;
+    }
 
     return returnAux;
 }
