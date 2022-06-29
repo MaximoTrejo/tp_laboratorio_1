@@ -44,7 +44,7 @@ int main()
 				break;
 			case 2:
 
-				if(controller_loadFromBinary("dataBin.bin",listaPasajeros)==0){
+				if(controller_loadFromBinary("data.bin",listaPasajeros)==0){
 					printf("*Archivo cargado correctamente\n");
 				}else{
 					printf("*No se pudo cargar el archivo\n");
@@ -96,7 +96,7 @@ int main()
 				}
 				break;
 			case 9:
-				if(controller_saveAsBinary("dataBin.bin", listaPasajeros)==0){
+				if(controller_saveAsBinary("data.bin", listaPasajeros)==0){
 					printf("*Archivo guardo correctamente\n");
 				}else{
 					printf("No se pudo guardar el archivo\n");

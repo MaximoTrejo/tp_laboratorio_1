@@ -64,13 +64,13 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
 
 	if(pArchivo != NULL){
 		if(parser_PassengerFromText(pArchivo, pArrayListPassenger) ==0){
-			fclose(pArchivo);
 			//printf("se leyo correctamente\n");
 			retorno=0;
 		}else{
 			//printf("no se leyo correctamente");
 			retorno=-1;
 		}
+		fclose(pArchivo);
 	}
 
     return retorno;
@@ -91,19 +91,24 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger)
 		 * 2-llamo al parser y me fijo si lo llamo bien
 		 * 3-retorno
 		 */
-	FILE *pArchivo;//tipo de estructura que me perdite manupular archivo
+	if (path != NULL && pArrayListPassenger != NULL) {
 
-	pArchivo=fopen(path,"rb");
+		FILE *pArchivo;//tipo de estructura que me perdite manupular archivo
 
-	if(pArchivo != NULL){
-		if(parser_PassengerFromBinary(pArchivo, pArrayListPassenger) ==0){
-			fclose(pArchivo);
-			printf("*Se leyo correctamente\n");
-			retorno=0;
-		}else{
-			printf("*No se leyo correctamente\n");
-			retorno=-1;
-		}
+			pArchivo=fopen(path,"rb");
+
+			if(pArchivo != NULL){
+
+				if(parser_PassengerFromBinary(pArchivo, pArrayListPassenger) ==0){
+					printf("*Se leyo correctamente\n");
+					retorno=0;
+					fclose(pArchivo);
+
+				}else{
+					printf("*No se leyo correctamente\n");
+					retorno=-1;
+				}
+			}
 	}
 	return retorno;
 }
@@ -419,6 +424,12 @@ int controller_removePassenger(LinkedList* pArrayListPassenger)
 
 	if(pArrayListPassenger!=NULL){
 		largo=ll_len(pArrayListPassenger);
+
+
+		printf("%d",largo);
+
+
+
 		if(largo!=0){
 			controller_ListPassenger(pArrayListPassenger);
 			if(utn_getInt(&id, "ingrese el id:", "error\n", 1, 2000, REINTENTOS)==0){
@@ -458,7 +469,6 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
 	if(pArrayListPassenger != NULL){
 
 		largo=ll_len(pArrayListPassenger);
-
 		if(largo!=0){
 
 			opcionesOrdenar();

@@ -66,34 +66,22 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
  */
 int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
 {
-	int retorno=-1;
-	Passenger * auxPassenger;
-	if(pFile != NULL && pArrayListPassenger != NULL){
-
-		while(!feof(pFile)){
-			//creo un pasajero en memoria
-			auxPassenger=Passenger_new();
-
-			if(auxPassenger != NULL){
-
-				if(fread(auxPassenger,sizeof(Passenger),1,pFile) != 1){
-
-					//le hace un free (libera memoria y devuelve error)
-					//Passenger_delete(auxPassenger);
-					retorno = -1;
-					break;
-
-				}else{
-
-					ll_add(pArrayListPassenger, auxPassenger);
-					retorno=0;
-
+	int retorno = -1;
+	if(pArrayListPassenger != NULL)
+	{
+		do
+			{
+				Passenger* pPassenger = Passenger_new();
+				if(pPassenger != NULL && fread(pPassenger, sizeof(Passenger), 1, pFile) == 1)
+				{
+					ll_add(pArrayListPassenger, pPassenger);
+					retorno = 0;
 				}
-			}
-
-		}//una funcion si le llego al final de un archivo 0 mal 1 bien
-
+				else
+				{
+					break;
+				}
+			}while(!feof(pFile));
 	}
-
     return retorno;
 }

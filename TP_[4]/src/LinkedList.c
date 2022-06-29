@@ -188,7 +188,7 @@ int ll_add(LinkedList* this, void* pElement)
                             (pElement) Si funciono correctamente
  *
  */
-void* ll_get(LinkedList* this, int index)
+void* ll_get(LinkedList* this, int index)//retorna el elemento
 {
     void* returnAux = NULL;
 
@@ -253,17 +253,20 @@ int ll_remove(LinkedList* this,int index)
     int returnAux = -1;
     Node *aux;
     Node*nodoAnterior;
-    if(this!=NULL && index < this->size){
+    if(this!=NULL && index < this->size && index >=0){
 
+    	aux=getNode(this, index);
     	if(index==0){
+
     		aux=this->pFirstNode;//trasformo al nodo que quiero borrar en el gancho al otro nodo(como la cabeza)
     		this->pFirstNode=aux->pNextNode;//agarro el gancho y lo igualo al puntero del nodo que quiero borrar (porque en ese nodo esta la direccion de el proximo nodo y si lo igualo es como si uniera la cabeza con el nodo)
     		free(aux);//borro el nodo que no quiero
     		this->size--;
     		returnAux = 0;
     	}else{
+
     		nodoAnterior=getNode(this, index-1);//saco el nodo anterior
-    		aux->pNextNode=nodoAnterior->pNextNode;//agarro el nodo que quiero borrar y lo igualo al puntero del anterior (que guarda la direccion del siguiente )(con esto uno el anterior con el siguiente y me olvido del nodo que quiero borrar)
+    		nodoAnterior->pNextNode = aux->pNextNode;//agarro el nodo que quiero borrar y lo igualo al puntero del anterior (que guarda la direccion del siguiente )(con esto uno el anterior con el siguiente y me olvido del nodo que quiero borrar)
     		free(aux);//borro el nodo a borrar
     		this->size--;
     		returnAux = 0;
@@ -314,7 +317,7 @@ int ll_deleteLinkedList(LinkedList* this)
 
     if(this!=NULL){
 
-    	free(this);
+    	free(this);//le hago free a todo y chau todo
     	returnAux = 0;
     }
 
@@ -333,6 +336,18 @@ int ll_indexOf(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
 
+    if(this!=NULL){//valido
+    	//recorro toda la lista
+    	for(int i=0;i<this->size;i++){
+    		//busco con la funcion llget (justo me devuelve el elemento) y lo igualo al elemento que ve vino por parametro
+    		if(ll_get(this, i)==pElement){
+    			//retorno el indice
+    			returnAux = i;
+    			break;
+    		}
+    	}
+    }
+
     return returnAux;
 }
 
@@ -347,6 +362,18 @@ int ll_indexOf(LinkedList* this, void* pElement)
 int ll_isEmpty(LinkedList* this)
 {
     int returnAux = -1;
+    int largo;
+    if(this!=NULL){
+
+    	largo=ll_len(this);
+
+    	if(largo == 0){
+    		returnAux = 1;
+    	}else{
+    		returnAux = 0;
+    	}
+
+    }
 
     return returnAux;
 }
@@ -362,7 +389,18 @@ int ll_isEmpty(LinkedList* this)
  */
 int ll_push(LinkedList* this, int index, void* pElement)
 {
-    int returnAux = -1;
+	 int returnAux = -1;
+	    //verifico
+	    if(this!=NULL && index >= 0 && index <= this->size){//no valido el pElement porque puede que no tenga nada , un tren pruede venir con vagones vacios
+
+	    	//la funcion addNode carga un nuevo nodo a la lista
+	    	//le paso la lista , posicion seria index esto se lo pregunto al usuario , y el elemento(serian los datos)
+	    	if(addNode(this, index, pElement)==0){
+
+	    		returnAux=0;//retorno 0 porque lo pide la funcion
+	    	}
+
+	    }
 
     return returnAux;
 }
@@ -380,6 +418,16 @@ void* ll_pop(LinkedList* this,int index)
 {
     void* returnAux = NULL;
 
+    if(this!=NULL && index >=0 && index<this->size){
+
+    	returnAux=ll_get(this, index);
+
+    	if(returnAux != NULL){
+
+    		ll_remove(this, index);
+    	}
+    }
+
     return returnAux;
 }
 
@@ -396,6 +444,17 @@ int ll_contains(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
 
+    if(this!=NULL){
+
+    	if(ll_indexOf(this, pElement) != -1){
+    		returnAux = 1;
+
+    	}else{
+    		returnAux = 0;
+
+    	}
+    }
+
     return returnAux;
 }
 
@@ -411,6 +470,30 @@ int ll_contains(LinkedList* this, void* pElement)
 int ll_containsAll(LinkedList* this,LinkedList* this2)
 {
     int returnAux = -1;
+    void* pElement;
+
+    if(this!=NULL && this2 !=NULL){
+
+    	if(ll_len(this2)==0){
+
+    		returnAux = 0;
+    	}
+
+    	for(int i=0; i<this2->size ; i++){
+
+    		pElement=ll_get(this2, i);
+
+    		if(ll_contains(this, pElement)==1){
+
+    			returnAux = 1;
+    		}else{
+    		    returnAux = 0;
+    		    break;
+    		}
+
+    	}
+
+    }
 
     return returnAux;
 }
@@ -428,6 +511,23 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 LinkedList* ll_subList(LinkedList* this,int from,int to)
 {
     LinkedList* cloneArray = NULL;
+    void*pElemento;
+
+    if(this!=NULL && from >= 0 && to >= from && to <= this->size){
+    	//creo una nueva lista
+    	cloneArray=ll_newLinkedList();
+    	//recorro la indice de la lista hasta el final de la misma indicada en los parametros (te mandan el inicio y el final de la lista por parametro)
+    	for(int i=from;i<to;i++){
+
+    		//guardo el elemento de la lista que vino por parametro
+    		pElemento=ll_get(this, i);
+    		//lo guerdo en la nueva lista
+    		ll_add(cloneArray, pElemento);
+
+
+    	}
+
+    }
 
     return cloneArray;
 }
@@ -443,7 +543,21 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 LinkedList* ll_clone(LinkedList* this)
 {
     LinkedList* cloneArray = NULL;
+    void*pElemento;
 
+    if(this!=NULL && this->size > 0 ){
+
+    	cloneArray=ll_newLinkedList();//creo una nueva lista
+
+    	//recorro la lista principal (la que viene por parametro)
+    	for(int i=0;i<this->size;i++){
+    		//cargo el elemento	de la lista anterior
+    		pElemento=ll_get(this, i);
+    		//uno el elemento a la lista nueva
+    		ll_add(cloneArray, pElemento);
+
+    	}
+    }
     return cloneArray;
 }
 
@@ -458,6 +572,45 @@ LinkedList* ll_clone(LinkedList* this)
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux =-1;
+    void*pElemento1;//elementos que  estan guardados en la funcion
+    void*pElemento2;//elementos que  estan guardados en la funcion
+
+    if(this != NULL && pFunc != NULL && (order ==1 || order == 0)){
+
+    	//recorro cada lugar de la lista
+    	for(int i=0 ;i<this->size -1 ;i++){
+
+    		for(int j = i+1 ;j<this->size;j++){
+
+    			//guardo en los pElementos los elementos de la lista
+    			pElemento1=ll_get(this, i);
+    			pElemento2=ll_get(this, j);
+
+    			//si el orden es == 1 (ascendente)
+    			if(order==1){
+    				//dependiendo de que devuelva la funcion (0 iguales)(1 cuando p1 es mayor a p2)(-1 cuando p1 es menor a p2)
+    				if((*pFunc)(pElemento1 ,pElemento2) > 0){
+
+    					//modifica la lista(se pisan los elementos dependiendo cual es mayor o menor)
+    					ll_set(this, j, pElemento1);
+    					ll_set(this, i, pElemento2);
+    				}
+
+    			}else{
+
+    				//dependiendo de que devuelva la funcion (0 iguales)(1 cuando p1 es mayor a p2)(-1 cuando p1 es menor a p2)
+    				if((*pFunc)(pElemento1 ,pElemento2) < 0){
+
+    					//modifica la lista(se pisan los elementos dependiendo cual es mayor o menor)
+    					ll_set(this, j, pElemento1);
+    					ll_set(this, i, pElemento2);
+    				}
+    			}
+    		}
+    	}
+
+    	returnAux = 0;
+    }
 
     return returnAux;
 
